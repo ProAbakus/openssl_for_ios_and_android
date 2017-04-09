@@ -19,7 +19,7 @@ set -u
 source ./_shared.sh
 
 # Setup architectures, library name and other vars + cleanup from previous runs
-LIB_NAME="openssl-1.0.2k"
+LIB_NAME="openssl-1.1.0e"
 LIB_DEST_DIR=${TOOLS_ROOT}/libs
 [ -d ${LIB_DEST_DIR} ] && rm -rf ${LIB_DEST_DIR}
 [ -f "${LIB_NAME}.tar.gz" ] || wget https://www.openssl.org/source/${LIB_NAME}.tar.gz;
@@ -35,7 +35,7 @@ configure_make() {
   #support openssl-1.0.x
   if [[ $LIB_NAME != "openssl-1.1.*" ]]; then
     if [[ $ARCH == "android-armeabi" ]]; then
-        ARCH="android-armv7"
+        ARCH="android-armeabi"
     elif [[ $ARCH == "android64" ]]; then 
         ARCH="linux-x86_64 shared no-ssl2 no-ssl3 no-hw "
     elif [[ "$ARCH" == "android64-aarch64" ]]; then
