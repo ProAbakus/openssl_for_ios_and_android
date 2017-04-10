@@ -30,7 +30,7 @@ This a static library compile from openssl and cURL for iOS and Android.
 
 ## Android NDK Version
 
-[android-ndk-r14b](https://dl.google.com/android/repository/android-ndk-r14b-darwin-x86_64.zip)
+ - [android-ndk-r14b](https://dl.google.com/android/repository/android-ndk-r14b-darwin-x86_64.zip)
 
 ## How to build
 
