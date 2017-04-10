@@ -20,13 +20,13 @@ If you do not want to build it by yourself, you could download our prebuilt libr
 
 This a static library compile from openssl and cURL for iOS and Android.
 
-[openssl-1.1.0e.tar.gz](https://www.openssl.org/source/openssl-1.1.0e.tar.gz)
-[https://github.com/openssl/openssl](https://github.com/openssl/openssl)
+ - [openssl-1.1.0e.tar.gz](https://www.openssl.org/source/openssl-1.1.0e.tar.gz)
+ - [https://github.com/openssl/openssl](https://github.com/openssl/openssl)
 
 ## cURL Version
 
-[curl-7.53.1.tar.gz](https://curl.haxx.se/download/curl-7.53.1.tar.gz)
-[https://github.com/curl/curl](https://github.com/curl/curl)
+ - [curl-7.53.1.tar.gz](https://curl.haxx.se/download/curl-7.53.1.tar.gz)
+ - [https://github.com/curl/curl](https://github.com/curl/curl)
 
 ## Android NDK Version
 
