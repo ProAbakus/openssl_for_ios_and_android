@@ -4,10 +4,10 @@
 <thead>
 <tr><td>library</td><td>version</td><td>platform support</td><td>arch support</td><td>pull commit</td></tr>
 </thead>
-<tr><td>openssl</td><td>1.1.0e</td><td>ios</td><td>armv7s armv7 i386 x86_64 arm64</td><td>20651fbb</td></tr>
-<tr><td></td><td></td><td>android</td><td>armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mips64</td><td>20651fbb</td></tr>
-<tr><td>curl</td><td>7.53.1</td><td>ios</td><td>armv7s armv7 i386 x86_64 arm64</td><td>20651fbb</td></tr>
-<tr><td></td><td></td><td>android</td><td>armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mips64</td><td>20651fbb</td></tr>
+<tr><td>openssl</td><td>1.1.0e</td><td>ios</td><td>armv7s armv7 i386 x86_64 arm64</td><td>0453163e9a9052884cce288ff3e2acb77725a239</td></tr>
+<tr><td></td><td></td><td>android</td><td>armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mips64</td><td>0453163e9a9052884cce288ff3e2acb77725a239</td></tr>
+<tr><td>curl</td><td>7.53.1</td><td>ios</td><td>armv7s armv7 i386 x86_64 arm64</td><td>25df50aa3392ecdbf2b8256b93b30558e8b3a810</td></tr>
+<tr><td></td><td></td><td>android</td><td>armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mips64</td><td>25df50aa3392ecdbf2b8256b93b30558e8b3a810</td></tr>
 </table>
 
 ## English
@@ -21,10 +21,12 @@ If you do not want to build it by yourself, you could download our prebuilt libr
 This a static library compile from openssl and cURL for iOS and Android.
 
 [openssl-1.1.0e.tar.gz](https://www.openssl.org/source/openssl-1.1.0e.tar.gz)
+[https://github.com/openssl/openssl](https://github.com/openssl/openssl)
 
 ## cURL Version
 
 [curl-7.53.1.tar.gz](https://curl.haxx.se/download/curl-7.53.1.tar.gz)
+[https://github.com/curl/curl](https://github.com/curl/curl)
 
 ## Android NDK Version
 
