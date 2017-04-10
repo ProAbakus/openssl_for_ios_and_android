@@ -32,7 +32,8 @@ PLATFORMS=("iPhoneOS" "iPhoneOS" "iPhoneOS" "iPhoneSimulator" "iPhoneSimulator")
 LIB_NAME="curl-7.53.1"
 DEVELOPER=`xcode-select -print-path`
 TOOLCHAIN=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
-SDK_VERSION=""10.2""
+#如果编译不过，修改此版本为自己电脑上的版本
+SDK_VERSION=""10.3""
 IPHONEOS_DEPLOYMENT_TARGET="6.0"
 LIB_DEST_DIR="${pwd_path}/../output/ios/curl-universal"
 HEADER_DEST_DIR="include"
