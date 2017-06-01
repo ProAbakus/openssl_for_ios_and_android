@@ -2,13 +2,13 @@
 #!/bin/bash
 #
 # Copyright 2016 leenjewel
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,13 +20,18 @@ set -u
 source ./_shared.sh
 
 # Setup architectures, library name and other vars + cleanup from previous runs
-LIB_NAME="openssl-1.1.0e"
 LIB_DEST_DIR=${TOOLS_ROOT}/libs
 [ -d ${LIB_DEST_DIR} ] && rm -rf ${LIB_DEST_DIR}
-[ -f "${LIB_NAME}.tar.gz" ] || wget https://www.openssl.org/source/${LIB_NAME}.tar.gz;
+NDK_ROOT="/usr/local/opt/android-ndk"
+ORIGINAL_PATH=$PATH
+TOOLCHAIN_PATH=
+LIB_NAME="openssl-1.0.2l"
+[ -f "${LIB_NAME}.tar.gz" ] || echo "Dowloading ${LIB_NAME}.tar.gz" || curl https://www.openssl.org/source/${LIB_NAME}.tar.gz > ${LIB_NAME}.tar.gz;
+
 # Unarchive library, then configure and make for specified architectures
 configure_make() {
   ARCH=$1; ABI=$2;
+
   rm -rf "${LIB_NAME}"
   tar xfz "${LIB_NAME}.tar.gz"
   pushd "${LIB_NAME}"
@@ -38,12 +43,14 @@ configure_make() {
   if [[ $LIB_NAME != openssl-1.1.* ]]; then
     if [[ $ARCH == "android-armeabi" ]]; then
         ARCH="android-armv7"
-    elif [[ $ARCH == "android64" ]]; then 
+    elif [[ $ARCH == "android64" ]]; then
         ARCH="linux-x86_64 shared no-ssl2 no-ssl3 no-hw "
     elif [[ "$ARCH" == "android64-aarch64" ]]; then
         ARCH="android shared no-ssl2 no-ssl3 no-hw "
     fi
   fi
+    echo "created ${TOOLCHAIN_PATH}"
+    read -p "Press any key to continue... " -n1 -s
 
   ./Configure $ARCH \
               --prefix=${LIB_DEST_DIR}/${ABI} \
@@ -53,7 +60,8 @@ configure_make() {
               no-asm \
               no-shared \
               no-unit-test
-  PATH=$TOOLCHAIN_PATH:$PATH
+
+  PATH=$TOOLCHAIN_PATH:$ORIGINAL_PATH
 
   if make -j4; then
     make install
@@ -66,6 +74,8 @@ configure_make() {
     cp ${LIB_DEST_DIR}/${ABI}/lib/libcrypto.a ${OUTPUT_ROOT}/lib
     cp ${LIB_DEST_DIR}/${ABI}/lib/libssl.a ${OUTPUT_ROOT}/lib
   fi;
+
+    rm -rf ${TOOLCHAIN_PATH}
   popd
 
 }
