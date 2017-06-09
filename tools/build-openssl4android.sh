@@ -58,13 +58,13 @@ configure_make() {
               --with-zlib-lib=$SYSROOT/usr/lib \
               zlib \
               no-asm \
-              no-shared \
+              shared \
               no-unit-test
 
   PATH=$TOOLCHAIN_PATH:$ORIGINAL_PATH
 
-  if make -j4; then
-    make install
+  if make CALC_VERSIONS="SHLIB_COMPAT=; SHLIB_SOVER=" build_libs -j4; then
+#     make install
 
     OUTPUT_ROOT=${TOOLS_ROOT}/../output/android/openssl-${ABI}
     [ -d ${OUTPUT_ROOT}/include ] || mkdir -p ${OUTPUT_ROOT}/include
@@ -74,8 +74,7 @@ configure_make() {
     cp ${LIB_DEST_DIR}/${ABI}/lib/libcrypto.a ${OUTPUT_ROOT}/lib
     cp ${LIB_DEST_DIR}/${ABI}/lib/libssl.a ${OUTPUT_ROOT}/lib
   fi;
-
-    rm -rf ${TOOLCHAIN_PATH}
+    read -p "Press any key to continue... " -n1 -s
   popd
 
 }
